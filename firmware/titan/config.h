@@ -46,7 +46,7 @@
 
 #define RGB_DI_PIN F5
 #ifdef RGB_DI_PIN
-#define RGBLED_NUM 20
+#define RGBLED_NUM 1
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
