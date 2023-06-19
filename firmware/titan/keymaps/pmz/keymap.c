@@ -1,10 +1,41 @@
 #include "titan.h"
 
+/*
+enum custom_keycodes {
+    Z1R_L_OSL = SAFE_RANGE,
+    Z1R_R_OSL,
+};
+*/
+
+enum combos {
+  MOUSE_BOTH,
+  COLUMN_BT,
+  COLUMN_MD,
+  COLUMN_PL,
+  COLUMN_FN,
+  COMBO_LENGTH
+};
+uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
+
+const uint16_t PROGMEM mouseboth_combo[] = {KC_BTN1, KC_BTN2, COMBO_END};
+const uint16_t PROGMEM bt_combo[] = {KC_B, KC_T, COMBO_END};
+const uint16_t PROGMEM md_combo[] = {KC_M, KC_D, COMBO_END};
+const uint16_t PROGMEM pl_combo[] = {KC_P, KC_L, COMBO_END};
+const uint16_t PROGMEM fn_combo[] = {KC_F, KC_N, COMBO_END};
+
+combo_t key_combos[] = {
+  [MOUSE_BOTH] = COMBO(mouseboth_combo, KC_BTN3),
+  [COLUMN_BT] = COMBO(bt_combo, KC_Z),
+  [COLUMN_MD] = COMBO(md_combo, KC_X),
+  [COLUMN_PL] = COMBO(pl_combo, KC_C),
+  [COLUMN_FN] = COMBO(fn_combo, KC_V),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //layer 0 - Ewen's Default
 	LAYOUT(
-		         KC_UP,            KC_H, KC_B,                LT(7, KC_MUTE), 
+		         KC_UP,            KC_H, KC_B,                LT(15, KC_MUTE), 
 		KC_LEFT, KC_DOWN, KC_RGHT, 
 		KC_ESC, KC_ENT, 
 		KC_A, KC_S, KC_D, KC_F, 
@@ -12,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_Z, KC_X, KC_C, KC_V),
 //layer 1 - Phoebe's Default
 	LAYOUT(
-		         KC_W,             KC_B, KC_N,                LT(7, KC_TAB), 
+		         KC_W,             KC_B, KC_N,                LT(15, KC_TAB), 
 		KC_A, KC_S, KC_D, 
 		KC_ESC, KC_ENT, 
 		KC_Y, KC_U, KC_I, KC_O, 
@@ -58,14 +89,87 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
-//layer 7 - LAYER SWITCHING
+//layer 7 - RESERVED
 	LAYOUT(
 		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 8 - RESERVED
+	LAYOUT(
+		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 9 - RESERVED
+	LAYOUT(
+		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 10 - RESERVED
+	LAYOUT(
+		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 11 - RESERVED
+	LAYOUT(
+		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 12 - RESERVED
+	LAYOUT(
+		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 13 - RESERVED
+	LAYOUT(
+		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 14 - Zelda 1 Randomizer Tracker
+	LAYOUT(
+		         KC_MS_U,          KC_BTN1, KC_BTN2,          KC_TRNS,
+		KC_MS_L, KC_MS_D, KC_MS_R, 
+		KC_TRNS, KC_TRNS, 
+		KC_B,    KC_M,    KC_P,    KC_F, 
+		MO(16), 
+		KC_T,    KC_D,    KC_L, KC_N),
+//layer 15 - LAYER SWITCHING
+	LAYOUT(
+		         TG(14),          KC_TRNS, KC_TRNS,          KC_TRNS,
 		KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, 
 		TG(2), TG(3), KC_TRNS, KC_TRNS,
 		TG(1), 		
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 16 - Z1R - Alternate
+	LAYOUT(
+		         KC_Q ,          KC_Y, KC_U,          KC_TRNS,
+		KC_E, KC_W, KC_R, 
+		KC_TRNS, KC_TRNS, 
+		KC_A, KC_S, KC_G, KC_H,
+		KC_TRNS, 		
+		KC_J, KC_K, KC_I, KC_O),
+		
 };
 
 bool encoder_update_kb(uint8_t index, bool clockwise) {
@@ -87,6 +191,19 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
     }
     return true;
 }
+/*
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case Z1R_L_OSL:
+	
+		break;
+	case Z1R_R_OSL:
+	
+		break;
+	}
+	return true;
+}
+*/
 
 void matrix_init_user(void) {
 }

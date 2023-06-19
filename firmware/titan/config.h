@@ -52,4 +52,7 @@
 #define RGBLIGHT_VAL_STEP 8
 #endif
 
+/* Mouse speed is constant */
+#define MK_3_SPEED
+
 #endif
