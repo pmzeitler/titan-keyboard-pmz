@@ -1,11 +1,16 @@
 #include "titan.h"
 
-/*
+
 enum custom_keycodes {
     Z1R_L_OSL = SAFE_RANGE,
     Z1R_R_OSL,
+	THP_TURBO_FIRE,
 };
-*/
+
+bool thp_turbo_down = false;
+uint16_t thp_turbo_timer = 0;
+
+const uint16_t PROGMEM THP_TURBO_RATE = 50;
 
 enum combos {
   MOUSE_BOTH,
@@ -68,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //layer 4 - TouhouPad v2 Emulation
 	LAYOUT(
 		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
-		KC_LSFT, KC_Z, KC_TRNS, 
+		KC_LSFT, KC_Z, THP_TURBO_FIRE, 
 		KC_ESC, KC_ENT, 
 		KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, 
 		KC_X, 
@@ -158,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		         TG(14),          KC_TRNS, KC_TRNS,          KC_TRNS,
 		KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, KC_TRNS, 
-		TG(2), TG(3), KC_TRNS, KC_TRNS,
+		TG(2), TG(3), TG(4), KC_TRNS,
 		TG(1), 		
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 //layer 16 - Z1R - Alternate
@@ -191,7 +196,7 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
     }
     return true;
 }
-/*
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case Z1R_L_OSL:
@@ -200,10 +205,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	case Z1R_R_OSL:
 	
 		break;
+	case THP_TURBO_FIRE:
+		if (record->event.pressed) {
+			if (!thp_turbo_down) {
+				thp_turbo_down = true;
+				tap_code(KC_Z);
+				thp_turbo_timer = timer_read();
+			}
+		} else {
+			if (thp_turbo_down) {
+				thp_turbo_down = false;
+			}
+		}
+		break;
 	}
 	return true;
 }
-*/
+
 
 void matrix_init_user(void) {
 }
+
+void matrix_scan_user(void) { // The very important timer.
+  if (thp_turbo_down) {
+    if (timer_elapsed(thp_turbo_timer) > THP_TURBO_RATE) {
+      tap_code(KC_Z);
+      thp_turbo_timer = timer_read();
+    }
+  }
+}
+
