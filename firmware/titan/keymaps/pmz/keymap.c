@@ -54,30 +54,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_Y, KC_U, KC_I, KC_O, 
 		KC_SPACE,
 		KC_H, KC_J, KC_K, KC_L),
-//layer 2 - Arrows instead of WASD		
+//layer 2 - TouhouPad v2 Emulation
 	LAYOUT(
-		         KC_UP,            KC_TRNS, KC_TRNS,          KC_TRNS, 
-		KC_LEFT, KC_DOWN, KC_RIGHT, 
-		KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS,
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
-//layer 3 - QWER/1234 instead of right hand actions (League of Legends etc.)
-	LAYOUT(
-		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, 
-		KC_1, KC_2, KC_3, KC_4, 
-		KC_TRNS,
-		KC_Q, KC_W, KC_E, KC_R),
-//layer 4 - TouhouPad v2 Emulation
-	LAYOUT(
-		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
+		         KC_NO,          KC_NO, KC_NO,          MO(15),
 		KC_LSFT, KC_Z, THP_TURBO_FIRE, 
 		KC_ESC, KC_ENT, 
-		KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, 
+		KC_NO, KC_UP, KC_NO, KC_NO, 
 		KC_X, 
-		KC_LEFT, KC_DOWN, KC_RIGHT, KC_TRNS),
+		KC_LEFT, KC_DOWN, KC_RIGHT, KC_NO),
+//layer 3 - Warframe (Phoebe)
+	LAYOUT(
+		         KC_W,          KC_X, KC_R,          LT(15, KC_ESC),
+		KC_A, KC_S, KC_D, 
+		KC_F, KC_G, 
+		KC_Q, KC_NO, KC_NO, KC_NO, 
+		KC_SPACE, 
+		KC_1, KC_2, KC_3, KC_4),
+//layer 4 - RESERVED
+	LAYOUT(
+		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 //layer 5 - RESERVED
 	LAYOUT(
 		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
@@ -142,7 +142,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
-//layer 13 - RESERVED
+//layer 13 - QWER/1234 instead of right hand actions (League of Legends etc.)
+	LAYOUT(
+		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, 
+		KC_1, KC_2, KC_3, KC_4, 
+		KC_TRNS,
+		KC_Q, KC_W, KC_E, KC_R),
+//layer 14 - Arrows instead of WASD		
+	LAYOUT(
+		         KC_UP,            KC_TRNS, KC_TRNS,          KC_TRNS, 
+		KC_LEFT, KC_DOWN, KC_RIGHT, 
+		KC_TRNS, KC_TRNS, 
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+		KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 15 - LAYER SWITCHING
+	LAYOUT(
+		         KC_TRNS,          TG(14), TG(13),          KC_TRNS,
+		KC_TRNS, KC_TRNS, KC_TRNS, 
+		TO(0), KC_TRNS, 
+		TO(1), TO(2), TO(3), KC_TRNS,
+		KC_TRNS, 		
+		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+//layer 16 - RESERVED
 	LAYOUT(
 		         KC_TRNS,          KC_TRNS, KC_TRNS,          KC_TRNS,
 		KC_TRNS, KC_TRNS, KC_TRNS, 
@@ -150,30 +174,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
 		KC_TRNS, 
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
-//layer 14 - Zelda 1 Randomizer Tracker
-	LAYOUT(
-		         KC_MS_U,          KC_BTN1, KC_BTN2,          KC_TRNS,
-		KC_MS_L, KC_MS_D, KC_MS_R, 
-		KC_TRNS, KC_TRNS, 
-		KC_B,    KC_M,    KC_P,    KC_F, 
-		MO(16), 
-		KC_T,    KC_D,    KC_L, KC_N),
-//layer 15 - LAYER SWITCHING
-	LAYOUT(
-		         TG(14),          KC_TRNS, KC_TRNS,          KC_TRNS,
-		KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, 
-		TG(2), TG(3), TG(4), KC_TRNS,
-		TG(1), 		
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
-//layer 16 - Z1R - Alternate
-	LAYOUT(
-		         KC_Q ,          KC_Y, KC_U,          KC_TRNS,
-		KC_E, KC_W, KC_R, 
-		KC_TRNS, KC_TRNS, 
-		KC_A, KC_S, KC_G, KC_H,
-		KC_TRNS, 		
-		KC_J, KC_K, KC_I, KC_O),
 		
 };
 
